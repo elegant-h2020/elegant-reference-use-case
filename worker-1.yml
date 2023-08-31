@@ -1,0 +1,16 @@
+# Network setup
+localWorkerIp: "172.31.0.3"
+coordinatorIp: "coordinator"
+
+# Query compiler configuration
+queryCompiler:
+  queryCompilerType: "NAUTILUS_QUERY_COMPILER"
+
+# Physical source setup
+physicalSources:
+  - logicalSourceName: "cartesian-points"
+    physicalSourceName: "cartesian-points-1"
+    type: "CSV_SOURCE"
+    configuration:
+      filePath: "/tutorial/resources/cartesian-points.csv"
+      skipHeader: true

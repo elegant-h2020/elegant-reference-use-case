@@ -1,0 +1,24 @@
+# Network setup
+restIp: "172.31.0.2"
+coordinatorIp: "172.31.0.2"
+restPort: "8081"
+
+# Source configuration
+logicalSources:
+  - logicalSourceName: "cartesian-points"
+    fields:
+      - name: "x"
+        type: "FLOAT64"
+      - name: "y"
+        type: "FLOAT64"
+
+# Query compiler configuration of internal worker
+worker:
+  queryCompiler:
+    queryCompilerType: "NAUTILUS_QUERY_COMPILER"
+
+# ELEGANT services setup
+elegant:
+  accelerateJavaUDFs: "true"
+  plannerServiceURL: "http://plannerService:8081/planner/schedule"
+  accelerationServiceURL: "http://accelerationService:8080/ElegantAccelerationService-1.0-SNAPSHOT/api/acceleration/submit"
