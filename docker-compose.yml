@@ -26,21 +26,30 @@ services:
               count: 1
               capabilities: [gpu]
   accelerationService:
-    image: elegant-acceleration-service-container
+    image: beehivelab/acceleration-service-container:latest
     ports:
       - 8080:8080
     volumes:
-      - ./configuration/acceleration_service:/root/Elegant-Acceleration-Service/service_db
+      - ./configuration/acceleration_service:/service/files
     networks:
       elegant-use-case-example-network:
-        - ipv4_address: 172.31.0.4
+        ipv4_address: 172.31.0.4
   plannerService:
     image: ckleitsikas/elegant_planner:latest
     ports:
       - 5000:8081
     networks:
       elegant-use-case-example-network:
-        - ipv4_address: 172.31.0.5
+        ipv4_address: 172.31.0.5
+  verificationService:
+    image: beehivelab/code-verification-service-container:latest
+    ports:
+      - 8082:8080
+    volumes:
+      - ./configuration/verification_service:/service/files
+    networks:
+      elegant-use-case-example-network:
+        ipv4_address: 172.31.0.6
 networks:
   elegant-use-case-example-network:
     ipam:
