@@ -1,7 +1,7 @@
 version: "3"
 services:
   coordinator:
-    image: nebulastream/nes-executable-image:latest
+    image: nebulastream/nes-elegant-image:latest
     entrypoint: ["bash", "-c", "nesCoordinator --configPath=/tutorial/coordinator.yml"]
     ports:
       - 8081:8081
@@ -11,7 +11,7 @@ services:
       elegant-use-case-example-network:
         ipv4_address: 172.31.0.2
   worker:
-    image: nebulastream/nes-executable-image:latest
+    image: nebulastream/nes-elegant-image:latest
     entrypoint: ["bash", "-c", "sleep 3 && nesWorker --configPath=/tutorial/worker-1.yml"]
     volumes:
       - ./:/tutorial
